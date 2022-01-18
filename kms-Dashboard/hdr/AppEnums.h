@@ -6,8 +6,29 @@
 class AppEnums : public QObject
 {
     Q_OBJECT
+
+    Q_ENUMS(E_SCREEN_t)
+    Q_ENUMS(E_EVENT_t)
+
 public:
-    explicit AppEnums(QObject *parent = nullptr);
+
+    enum E_SCREEN_t
+    {
+        SearchScreen = 0,
+        HomeScreen,
+        ControlScreen,
+        MapScreen,
+        UserScreen,
+    };
+
+    enum E_EVENT_t
+    {
+        UserClickSearch = 0,
+        UserClickHome,
+        UserClickControl,
+        UserClickMap,
+        UserClickAccount,
+    };
 
 signals:
 
