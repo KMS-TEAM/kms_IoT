@@ -7,12 +7,13 @@ QRec {
     id: homeScreen
     color: CONST.COLOR_BACK_GROUND
 
-    QHorizontalSwipeButton {
+    QSwitchButton {
         id: swipeTab
-        width: 400
+        width: 50
         height: 50
         radius: 20
-        anchors.centerIn: parent
-
+        anchors.top: parent
+        anchors.topMargin: 10
+        anchors.rightMargin: 10
     }
 }
