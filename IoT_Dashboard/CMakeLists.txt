@@ -15,17 +15,17 @@ set(JSON_BuildTests OFF CACHE INTERNAL "")
 find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
 find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
 
-find_package(libmongocxx REQUIRED)
-find_package(libbsoncxx REQUIRED)
+#find_package(libmongocxx REQUIRED)
+#find_package(libbsoncxx REQUIRED)
 
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QtQml_INCLUDE_DIRS})
-include_directories(${LIBMONGOCXX_INCLUDE_DIR})
-include_directories(${LIBBSONCXX_INCLUDE_DIR})
-include_directories("/usr/local/include/mongocxx/v_noabi")
-include_directories("/usr/local/include/bsoncxx/v_noabi")
-include_directories("/usr/local/include/libmongoc-1.0")
-include_directories("/usr/local/include/libbson-1.0")
+#include_directories(${LIBMONGOCXX_INCLUDE_DIR})
+#include_directories(${LIBBSONCXX_INCLUDE_DIR})
+#include_directories("/usr/local/include/mongocxx/v_noabi")
+#include_directories("/usr/local/include/bsoncxx/v_noabi")
+#include_directories("/usr/local/include/libmongoc-1.0")
+#include_directories("/usr/local/include/libbson-1.0")
 include_directories("/usr/local/lib")
 
 add_definitions(${Qt5Widgets_DEFINITIONS} ${QtQml_DEFINITIONS} ${${Qt5Quick_DEFINITIONS}})
@@ -73,7 +73,8 @@ endif()
 target_compile_definitions(IoT-Dashboard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(IoT-Dashboard
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
+ # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
