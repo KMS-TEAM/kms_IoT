@@ -6,20 +6,20 @@
 #include <QMutex>
 #include "AppEnums.h"
 
-#define MODEL AppModel::getInstance();
+#define MODEL AppModel::getInstance()
 
 class AppModel : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(int currentScreenID READ currentScreenID WRITE setCurrentScreenID NOTIFY currentScreenIDChanged)
 public:
-    static AppModel *getInstannce();
-    Q_INVOKABLE void qmlEventHandler(int event);
+    static AppModel *getInstance();
 
     int currentScreenID() const;
 
 public slots:
     void setCurrentScreenID(int currentScreenID);
+    void slotReceiveEvent(int event);
 
 signals:
     void currentScreenIDChanged(int currentScreenID);
