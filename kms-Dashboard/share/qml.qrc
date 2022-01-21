@@ -2,6 +2,15 @@
     <qresource prefix="/qml">
         <file>qml/main.qml</file>
         <file>qml/MainScreen.qml</file>
+        <file>qml/Screen/ControlScreen.qml</file>
+        <file>qml/Screen/HomeScreen.qml</file>
+        <file>qml/Screen/MapSceen.qml</file>
+        <file>qml/Screen/UserScreen.qml</file>
+        <file>qml/Component/Common/QImage.qml</file>
+        <file>qml/Component/Common/QRec.qml</file>
+        <file>qml/Component/Common/QText.qml</file>
+        <file>qml/Component/Common/QTimer.qml</file>
+        <file>qml/Component/QButton.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>res/dark/control.svg</file>
