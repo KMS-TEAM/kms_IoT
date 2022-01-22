@@ -26,7 +26,7 @@ void AppEngine::initEngine()
     qmlRegisterUncreatableType<AppEnums>("QmlCustomItem", 1, 0, "ENUMS", "Uncreatable");
 
     // set context properties
-     m_rootContext->setContextProperty("QmlHandler", QML_HANDLER);
+    m_rootContext->setContextProperty("QmlHandler", QML_HANDLER);
     m_rootContext->setContextProperty("CONST", DEFS);
     m_rootContext->setContextProperty("SCREEN", SCR_DEF);
     m_rootContext->setContextProperty("AppModel", MODEL);
