@@ -26,4 +26,8 @@
         <file>res/light/search.svg</file>
         <file>res/light/user.svg</file>
     </qresource>
+    <qresource prefix="/config">
+        <file>config/broker.json</file>
+        <file>config/devices.json</file>
+    </qresource>
 </RCC>

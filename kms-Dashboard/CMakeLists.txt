@@ -13,11 +13,11 @@ set(CMAKE_AUTORCC ON)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-#find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
-#find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+#find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
+#find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QtQml_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/hdr/)
@@ -26,9 +26,26 @@ include_directories("/usr/local/lib")
 
 add_definitions(${Qt5Widgets_DEFINITIONS} ${QtQml_DEFINITIONS} ${${Qt5Quick_DEFINITIONS}})
 
-file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/hdr/*.h)
+file(GLOB HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/hdr/*.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Comon/*.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Handler/*.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Model/*.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Plugin/*.h
+                  ${CMAKE_CURRENT_SOURCE_DIR}/hdr/View/*.h)
 
-file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
+file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/src/Comon/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/src/Handler/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/src/Model/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/src/Plugin/*.cpp
+                  ${CMAKE_CURRENT_SOURCE_DIR}/src/View/*.cpp)
+
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/hdr
+                     ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Comon
+                     ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Plugin
+                     ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Handler
+                     ${CMAKE_CURRENT_SOURCE_DIR}/hdr/Model
+                     ${CMAKE_CURRENT_SOURCE_DIR}/hdr/View)
 
 source_group("Header Files" FILES ${HEADERS})
 source_group("Source Files" FILES ${SOURCES})
@@ -61,8 +78,8 @@ target_compile_definitions(kms-Dashboard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(kms-Dashboard
  # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
-#  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt)
-PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt)
+# PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
