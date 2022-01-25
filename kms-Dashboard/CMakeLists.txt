@@ -13,8 +13,11 @@ set(CMAKE_AUTORCC ON)
 
 set(JSON_BuildTests OFF CACHE INTERNAL "")
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
+#find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
+#find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
+
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS} ${QtQml_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/hdr/)
@@ -58,7 +61,8 @@ target_compile_definitions(kms-Dashboard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(kms-Dashboard
  # PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt)
+#  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt)
+PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
 
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})

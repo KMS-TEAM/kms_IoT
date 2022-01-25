@@ -40,6 +40,15 @@ void AppModel::slotReceiveEvent(int event)
     case static_cast<int>(AppEnums::E_SCREEN_t::SearchScreen):
         CONSOLE <<  "Search Screen";
         break;
+    case static_cast<int>(AppEnums::E_SCREEN_t::ControlScreen):
+        CONSOLE << "Control Screen";
+        break;
+    case static_cast<int>(AppEnums::E_SCREEN_t::MapScreen):
+        CONSOLE << "Map Screen";
+        break;
+    case static_cast<int>(AppEnums::E_SCREEN_t::UserScreen):
+        CONSOLE << "User Screen";
+        break;
     default:
         break;
     }

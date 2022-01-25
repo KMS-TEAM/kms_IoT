@@ -1,23 +1,23 @@
-import QtQuick 2.0
+import QtQuick 2.12
 import QtQuick.Window 2.12
 
-Window {
-
+Window
+{
     id: root
+    width: CONST.MAX_WIDTH
+    height: CONST.MAX_HEIGHT
+    maximumHeight: height
+    maximumWidth: width
+    minimumHeight: height
+    minimumWidth: width
 
     visible: true
-    width: 500
-    height: 500
 
-    Rectangle {
+    Loader
+    {
         anchors.fill: parent
-        Text {
-            id: textLabel
-            text: "KMS Dashboard"
-            color: "purple"
-            font.pointSize: 20
-            anchors.top: parent.top
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+        source: SCREEN.QML_MAIN_SCREEN
     }
 }
+
+
