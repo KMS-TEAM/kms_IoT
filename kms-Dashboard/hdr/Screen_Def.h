@@ -70,8 +70,8 @@ private:
     DEF_SCREEN(QML_TEST         , QML_FOLDER() + "TestScreen.qml")
 
     // detail screen
-    DEF_SCREEN(QML_HOME         , QML_FOLDER() + "Screen/Home/HomeScreen.qml")
-    DEF_SCREEN(QML_SEARCH       , QML_FOLDER() + "Screen/Search/SearchScreen.qml")
+    DEF_SCREEN(QML_HOME         , QML_FOLDER() + "Screen/HomeScreen.qml")
+    DEF_SCREEN(QML_SEARCH       , QML_FOLDER() + "Screen/SearchScreen.qml")
 
 };
 
