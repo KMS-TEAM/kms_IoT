@@ -29,20 +29,20 @@ public:
     static QSensorMQTT *getInstance();
     ~QSensorMQTT();
 
-    void loadMQTTSetting();
+    int loadMQTTSetting();
     int initBokerHost();
-    void connectMQTT(QString bokerName, qint16 port);
+    void connectMQTT(QString brokerName, qint16 port);
 
 public slots:
-    QString MQTT_Received();
-    void onMQTT_Connected();
+    void onMQTT_Connected(QString topic);
     void onMQTT_disconnected();
-    void onMQTT_Received(const QString message);
+    void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
 
     void MQTT_Publish(SensorNode node, QString message);
     void MQTT_Subcrib(SensorNode node);
 
 signals:
+    void MQTT_Received();
 
 public:
     QVector<QString> brokerHosts;
