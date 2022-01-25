@@ -12,6 +12,7 @@
         <file>qml/Component/Common/QTimer.qml</file>
         <file>qml/Component/QButton.qml</file>
         <file>qml/Component/QMenuBar.qml</file>
+        <file>qml/Screen/SearchScreen.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>res/dark/control.svg</file>
