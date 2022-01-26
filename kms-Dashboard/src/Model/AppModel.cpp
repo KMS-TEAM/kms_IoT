@@ -28,6 +28,7 @@ void AppModel::setCurrentScreenID(int currentScreenID)
         return;
 
     m_currentScreenID = currentScreenID;
+    CONSOLE << "SCREEN ID: " << currentScreenID;
     emit currentScreenIDChanged(m_currentScreenID);
 }
 
@@ -36,18 +37,23 @@ void AppModel::slotReceiveEvent(int event)
     switch (event) {
     case static_cast<int>(AppEnums::E_SCREEN_t::HomeScreen):
         CONSOLE <<  "Home Screen";
+        setCurrentScreenID(AppEnums::HomeScreen);
         break;
     case static_cast<int>(AppEnums::E_SCREEN_t::SearchScreen):
         CONSOLE <<  "Search Screen";
+        setCurrentScreenID(AppEnums::SearchScreen);
         break;
     case static_cast<int>(AppEnums::E_SCREEN_t::ControlScreen):
         CONSOLE << "Control Screen";
+        setCurrentScreenID(AppEnums::ControlScreen);
         break;
     case static_cast<int>(AppEnums::E_SCREEN_t::MapScreen):
         CONSOLE << "Map Screen";
+        setCurrentScreenID(AppEnums::MapScreen);
         break;
     case static_cast<int>(AppEnums::E_SCREEN_t::UserScreen):
         CONSOLE << "User Screen";
+        setCurrentScreenID(AppEnums::UserScreen);
         break;
     default:
         break;

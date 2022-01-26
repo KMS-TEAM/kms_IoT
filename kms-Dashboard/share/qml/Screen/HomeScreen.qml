@@ -4,6 +4,8 @@ import QtQuick.Controls 2.1
 import QtQuick.Layouts 1.1
 import MqttClient 1.0
 import "../Component/Common"
+import "../Component"
+import QmlCustomItem 1.0
 
 QRec {
     visible: true

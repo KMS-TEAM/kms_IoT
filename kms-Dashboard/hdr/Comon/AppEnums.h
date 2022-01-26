@@ -6,10 +6,6 @@
 class AppEnums : public QObject
 {
     Q_OBJECT
-
-    Q_ENUMS(E_SCREEN_t)
-    Q_ENUMS(E_EVENT_t)
-
 public:
 
     enum E_SCREEN_t
@@ -20,6 +16,7 @@ public:
         MapScreen,
         UserScreen,
     };
+    Q_ENUM(E_SCREEN_t)
 
     enum E_EVENT_t
     {
@@ -29,6 +26,7 @@ public:
         UserClickMap,
         UserClickAccount,
     };
+    Q_ENUM(E_EVENT_t)
 
 signals:
 

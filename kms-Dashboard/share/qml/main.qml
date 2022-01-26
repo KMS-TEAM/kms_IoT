@@ -1,6 +1,8 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 
+import QmlCustomItem 1.0
+
 Window
 {
     id: root
@@ -18,6 +20,8 @@ Window
         anchors.fill: parent
         source: SCREEN.QML_MAIN_SCREEN
     }
+
+    Component.onCompleted: {
+        QmlHandler.qmlMessage("dcm nha chung m")
+    }
 }
-
-

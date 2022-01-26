@@ -27,17 +27,29 @@ Item {
     }
 
     Loader {
-        id: searchLoader
-        visible: AppModel.currentScreenID === ENUMS.SearchScreen
+        id: screenLoader
+        visible: true
+        property int screenID: AppModel.currentScreenID
         anchors.fill: mainScreen
-        source: SCREEN.QML_SEARCH
+        onScreenIDChanged: source = getScreenUrl(screenID)
+        Component.onCompleted: {
+            source = getScreenUrl(screenID)
+        }
     }
 
-    Loader {
-        id: homeLoader
-        visible: AppModel.currentScreenID === ENUMS.HomeScreen
-        anchors.fill: mainScreen
-        source: SCREEN.QML_HOME
+    function getScreenUrl(id){
+        QmlHandler.qmlMessage("getScreenUrl " + id)
+        QmlHandler.qmlMessage("getScreenUrl " + ENUMS.HomeScreen + " " + ENUMS.SearchScreen)
+        switch(id){
+        case ENUMS.HomeScreen:
+            QmlHandler.qmlMessage("Home Screen");
+            return SCREEN.QML_HOME
+        case ENUMS.SearchScreen:
+            QmlHandler.qmlMessage("Search Screen");
+            return SCREEN.QML_SEARCH
+        default:
+            return ""
+        }
     }
 
 }

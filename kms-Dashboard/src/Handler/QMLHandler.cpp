@@ -1,4 +1,5 @@
 #include "QMLHandler.h"
+#include <QDebug>
 
 QMLHandler *QMLHandler::m_instance = nullptr;
 
@@ -18,7 +19,7 @@ void QMLHandler::qmlSendEvent(int event)
 
 void QMLHandler::qmlMessage(QString msg)
 {
-
+    qDebug().noquote() << "[QtMsg] " << msg;
 }
 
 QMLHandler::QMLHandler()
