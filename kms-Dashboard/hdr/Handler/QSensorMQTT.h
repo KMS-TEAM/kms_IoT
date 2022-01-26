@@ -53,9 +53,9 @@ public slots:
     void setCurrentSensorNode(SensorNode node);
 
 signals:
-    void MQTT_Received();
-    void mqttMessageChanged();
-    void currentSensorNodeChanged();
+    void MQTT_Received(QString msg);
+    void mqttMessageChanged(QString msg);
+    void currentSensorNodeChanged(SensorNode node);
 
 public:
     QVector<QString> brokerHosts;

@@ -22,6 +22,11 @@ int AppModel::currentScreenID() const
     return m_currentScreenID;
 }
 
+QString AppModel::sensorMess() const
+{
+    return m_mess;
+}
+
 void AppModel::startHomeScreen()
 {
     m_sensor->connectMQTT(m_sensor->brokerHosts.at(0), 1883);
@@ -67,6 +72,13 @@ void AppModel::slotReceiveEvent(int event)
     }
 }
 
+void AppModel::setSensorMess(QString msg)
+{
+    m_mess = msg;
+
+    emit sensorMessChanged(msg);
+}
+
 AppModel::AppModel(QObject *parent)
     : QObject(parent)
     , m_currentScreenID {static_cast<int>(AppEnums::SearchScreen)}
@@ -76,4 +88,6 @@ AppModel::AppModel(QObject *parent)
     m_sensor->initBokerHost(DEFS->BROKER_PATH());
 
     CONSOLE << m_sensor->sensorsNode.at(0).topic_data;
+
+    connect(m_sensor, &QSensorMQTT::mqttMessageChanged, this, &AppModel::setSensorMess);
 }

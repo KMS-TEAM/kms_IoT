@@ -97,7 +97,7 @@ void QSensorMQTT::onMQTT_Received(const QByteArray &message, const QMqttTopicNam
     CONSOLE << "TOPIC: " << topic;
     CONSOLE << "MESSAGE: " << message;
 
-    emit MQTT_Received();
+    emit mqttMessageChanged(QString(message));
 }
 
 void QSensorMQTT::MQTT_Publish(SensorNode node, QString message)
@@ -123,12 +123,12 @@ void QSensorMQTT::setMqttMessage(QString &msg)
 {
     m_mqttMessage = msg;
 
-    emit mqttMessageChanged();
+    emit mqttMessageChanged(msg);
 }
 
 void QSensorMQTT::setCurrentSensorNode(SensorNode node)
 {
     m_currentSensorNode = node;
 
-    emit currentSensorNodeChanged();
+    emit currentSensorNodeChanged(node);
 }
