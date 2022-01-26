@@ -25,6 +25,9 @@ struct SensorNode {
 class QSensorMQTT : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString mqttMesage READ mqttMessage WRITE setMqttMessage NOTIFY mqttMessageChanged)
+    Q_PROPERTY(SensorNode currentSensorNode READ currentSensorNode WRITE setCurrentSensorNode NOTIFY currentSensorNodeChanged)
+
     static QSensorMQTT *m_instance;
 
 public:
@@ -35,16 +38,24 @@ public:
     int initBokerHost(QString path);
     void connectMQTT(QString brokerName, qint16 port);
 
+    QString mqttMessage() const;
+    SensorNode currentSensorNode() const;
+
 public slots:
-    void onMQTT_Connected(QString topic);
+    void onMQTT_Connected();
     void onMQTT_disconnected();
     void onMQTT_Received(const QByteArray &message, const QMqttTopicName &topic);
 
     void MQTT_Publish(SensorNode node, QString message);
     void MQTT_Subcrib(SensorNode node);
 
+    void setMqttMessage(QString &msg);
+    void setCurrentSensorNode(SensorNode node);
+
 signals:
     void MQTT_Received();
+    void mqttMessageChanged();
+    void currentSensorNodeChanged();
 
 public:
     QVector<QString> brokerHosts;
@@ -58,11 +69,13 @@ private:
     QSensorMQTT(const QSensorMQTT&) = delete;
     void operator =(const QSensorMQTT&) = delete;
 
-    QmlMqttClient *m_client;
+    QMqttClient *m_client;
     SensorNode m_current_device;
     SensorNode m_current_sub;
     SensorNode m_current_pub;
 
+    QString m_mqttMessage;
+    SensorNode m_currentSensorNode;
 };
 
 #endif // QSENSORMQTT_H

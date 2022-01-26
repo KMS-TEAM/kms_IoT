@@ -59,21 +59,32 @@ int QSensorMQTT::initBokerHost(QString path)
 
 void QSensorMQTT::connectMQTT(QString brokerName, qint16 port)
 {
-    m_client = new QmlMqttClient();
-    connect(m_client, &QmlMqttClient::disconnected, this, &QSensorMQTT::onMQTT_disconnected);
-    connect(m_client, &QmlMqttClient::messageReceived, this, &QSensorMQTT::onMQTT_Received);
+    m_client->disconnectFromHost();
+    m_client = new QMqttClient(this);
+    connect(m_client, &QMqttClient::disconnected, this, &QSensorMQTT::onMQTT_disconnected);
+    connect(m_client, &QMqttClient::connected, this, &QSensorMQTT::onMQTT_Connected);
+    connect(m_client, &QMqttClient::messageReceived, this, &QSensorMQTT::onMQTT_Received);
     m_client->setHostname(brokerName);
     m_client->setPort(port);
     m_client->connectToHost();
+    CONSOLE << "HOST: " << brokerName;
+    CONSOLE << "PORT: " << port;
+}
+
+QString QSensorMQTT::mqttMessage() const
+{
+    return m_mqttMessage;
+}
+
+SensorNode QSensorMQTT::currentSensorNode() const
+{
+    return m_currentSensorNode;
 }
 
 
-void QSensorMQTT::onMQTT_Connected(QString topic)
+void QSensorMQTT::onMQTT_Connected()
 {
-    auto sub = m_client->subscribe(topic);
-    if (!sub){
-        qDebug() << "Could not subcribe. Is there avalid connection?";
-    }
+    MQTT_Subcrib(sensorsNode.at(0));
 }
 
 void QSensorMQTT::onMQTT_disconnected()
@@ -100,5 +111,24 @@ void QSensorMQTT::MQTT_Subcrib(SensorNode node)
     m_client->unsubscribe(m_current_sub.topic_data);
     m_current_device = node;
     m_current_sub = node;
-    onMQTT_Connected(m_current_sub.topic_data);
+
+    CONSOLE << "SUB: " << m_current_sub.topic_data;
+    auto sub = m_client->subscribe(m_current_sub.topic_data, 2);
+    if (!sub){
+        qDebug() << "Could not subcribe. Is there avalid connection?";
+    }
+}
+
+void QSensorMQTT::setMqttMessage(QString &msg)
+{
+    m_mqttMessage = msg;
+
+    emit mqttMessageChanged();
+}
+
+void QSensorMQTT::setCurrentSensorNode(SensorNode node)
+{
+    m_currentSensorNode = node;
+
+    emit currentSensorNodeChanged();
 }

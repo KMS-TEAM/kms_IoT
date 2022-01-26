@@ -22,6 +22,12 @@ int AppModel::currentScreenID() const
     return m_currentScreenID;
 }
 
+void AppModel::startHomeScreen()
+{
+    m_sensor->connectMQTT(m_sensor->brokerHosts.at(0), 1883);
+    // m_sensor->MQTT_Subcrib(m_sensor->sensorsNode.at(0));
+}
+
 void AppModel::setCurrentScreenID(int currentScreenID)
 {
     if (m_currentScreenID == currentScreenID)
@@ -38,6 +44,7 @@ void AppModel::slotReceiveEvent(int event)
     case static_cast<int>(AppEnums::E_SCREEN_t::HomeScreen):
         CONSOLE <<  "Home Screen";
         setCurrentScreenID(AppEnums::HomeScreen);
+        startHomeScreen();
         break;
     case static_cast<int>(AppEnums::E_SCREEN_t::SearchScreen):
         CONSOLE <<  "Search Screen";
@@ -62,9 +69,11 @@ void AppModel::slotReceiveEvent(int event)
 
 AppModel::AppModel(QObject *parent)
     : QObject(parent)
-    , m_currentScreenID {static_cast<int>(AppEnums::HomeScreen)}
+    , m_currentScreenID {static_cast<int>(AppEnums::SearchScreen)}
 {
     m_sensor = QSensorMQTT::getInstance();
-    m_sensor->initBokerHost();
+    m_sensor->loadMQTTSetting(DEFS->DEVICE_PATH());
+    m_sensor->initBokerHost(DEFS->BROKER_PATH());
 
+    CONSOLE << m_sensor->sensorsNode.at(0).topic_data;
 }

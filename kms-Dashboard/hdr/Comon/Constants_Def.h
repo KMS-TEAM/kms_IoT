@@ -87,8 +87,8 @@ private:
 
     // Config
 
-    DEF_CONST(QString, BROKER_PATH, "qrc:/config/config/broker.json")
-    DEF_CONST(QString, DEVICE_PATH, "qrc:/config/config/devices.json")
+    DEF_CONST(QString, BROKER_PATH, ":/config/config/broker.json")
+    DEF_CONST(QString, DEVICE_PATH, ":/config/config/devices.json")
 
 
     /********************************************** GENERAL **********************************************/

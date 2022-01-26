@@ -10,6 +10,9 @@ QmlMqttClient::QmlMqttClient(QObject *parent)
 QmlMqttSubscription *QmlMqttClient::subscribe(const QString &topic)
 {
     auto sub = QMqttClient::subscribe(topic, 0);
+    if(sub == nullptr){
+        CONSOLE << "Fucking Ptr";
+    }
     auto result = new QmlMqttSubscription(sub, this);
     return result;
 }

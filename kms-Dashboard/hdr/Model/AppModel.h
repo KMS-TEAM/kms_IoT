@@ -17,6 +17,7 @@ public:
     static AppModel *getInstance();
 
     int currentScreenID() const;
+    void startHomeScreen();
 
 public slots:
     void setCurrentScreenID(int currentScreenID);
