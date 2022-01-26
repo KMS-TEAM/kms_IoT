@@ -13,6 +13,8 @@
 #include <QFile>
 #include <QMutex>
 
+#include "QmlMQTTClient.h"
+
 struct SensorNode {
     QString topic_data;
     QString topic_control;
@@ -29,8 +31,8 @@ public:
     static QSensorMQTT *getInstance();
     ~QSensorMQTT();
 
-    int loadMQTTSetting();
-    int initBokerHost();
+    int loadMQTTSetting(QString path);
+    int initBokerHost(QString path);
     void connectMQTT(QString brokerName, qint16 port);
 
 public slots:
@@ -56,7 +58,7 @@ private:
     QSensorMQTT(const QSensorMQTT&) = delete;
     void operator =(const QSensorMQTT&) = delete;
 
-    QMqttClient *m_client;
+    QmlMqttClient *m_client;
     SensorNode m_current_device;
     SensorNode m_current_sub;
     SensorNode m_current_pub;

@@ -23,9 +23,9 @@ QSensorMQTT::~QSensorMQTT()
 
 }
 
-int QSensorMQTT::loadMQTTSetting()
+int QSensorMQTT::loadMQTTSetting(QString path)
 {
-    QFile file(device_path.toStdString().c_str());
+    QFile file(path.toStdString().c_str());
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     QString val = file.readAll();
     file.close();
@@ -43,9 +43,9 @@ int QSensorMQTT::loadMQTTSetting()
     return 0;
 }
 
-int QSensorMQTT::initBokerHost()
+int QSensorMQTT::initBokerHost(QString path)
 {
-    QFile f(broker_path.toStdString().c_str());
+    QFile f(path.toStdString().c_str());
     f.open(QIODevice::ReadOnly | QIODevice::Text);
     QString val = f.readAll();
     QJsonArray array = QJsonDocument::fromJson(val.toUtf8()).array();
@@ -59,9 +59,9 @@ int QSensorMQTT::initBokerHost()
 
 void QSensorMQTT::connectMQTT(QString brokerName, qint16 port)
 {
-    m_client = new QMqttClient();
-    connect(m_client, &QMqttClient::disconnected, this, &QSensorMQTT::onMQTT_disconnected);
-    connect(m_client, &QMqttClient::messageReceived, this, &QSensorMQTT::onMQTT_Received);
+    m_client = new QmlMqttClient();
+    connect(m_client, &QmlMqttClient::disconnected, this, &QSensorMQTT::onMQTT_disconnected);
+    connect(m_client, &QmlMqttClient::messageReceived, this, &QSensorMQTT::onMQTT_Received);
     m_client->setHostname(brokerName);
     m_client->setPort(port);
     m_client->connectToHost();
@@ -70,7 +70,7 @@ void QSensorMQTT::connectMQTT(QString brokerName, qint16 port)
 
 void QSensorMQTT::onMQTT_Connected(QString topic)
 {
-    auto sub = m_client->subscribe(topic, quint8(2));
+    auto sub = m_client->subscribe(topic);
     if (!sub){
         qDebug() << "Could not subcribe. Is there avalid connection?";
     }

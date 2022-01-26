@@ -5,6 +5,7 @@
 #include <QString>
 #include <QMutex>
 #include "AppEnums.h"
+#include "QSensorMQTT.h"
 
 #define MODEL AppModel::getInstance()
 
@@ -32,6 +33,7 @@ private:
     static AppModel* m_instance;
     static QMutex m_lock;
     int m_currentScreenID;
+    QSensorMQTT *m_sensor;
 };
 
 #endif // APPMODEL_H

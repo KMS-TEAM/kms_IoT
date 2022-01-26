@@ -85,6 +85,11 @@ private:
     DEF_CONST(QString, MAP_IMG      , "map.svg"     )
     DEF_CONST(QString, USER_IMG     , "user.svg"    )
 
+    // Config
+
+    DEF_CONST(QString, BROKER_PATH, "qrc:/config/config/broker.json")
+    DEF_CONST(QString, DEVICE_PATH, "qrc:/config/config/devices.json")
+
 
     /********************************************** GENERAL **********************************************/
     DEF_CONST(int, MAX_WIDTH        , 1280  )

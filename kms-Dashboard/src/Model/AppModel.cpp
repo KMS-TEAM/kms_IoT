@@ -64,5 +64,7 @@ AppModel::AppModel(QObject *parent)
     : QObject(parent)
     , m_currentScreenID {static_cast<int>(AppEnums::HomeScreen)}
 {
+    m_sensor = QSensorMQTT::getInstance();
+    m_sensor->initBokerHost();
 
 }

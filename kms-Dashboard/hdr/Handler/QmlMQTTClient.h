@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QtMqtt/QMqttClient>
 #include <QtMqtt/QMqttSubscription>
-#include "QSensorMQTT.h"
 
 class QmlMqttClient;
 
