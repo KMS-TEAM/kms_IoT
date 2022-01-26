@@ -1,6 +1,6 @@
 #include "HomeScreen.h"
 
-HomeScreen::HomeScreen()
+HomeScreen::HomeScreen(QObject *parent)
 {
 
 }
