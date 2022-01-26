@@ -21,7 +21,4 @@ Window
         source: SCREEN.QML_MAIN_SCREEN
     }
 
-    Component.onCompleted: {
-        QmlHandler.qmlMessage("dcm nha chung m")
-    }
 }

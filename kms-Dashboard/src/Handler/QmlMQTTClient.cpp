@@ -7,7 +7,7 @@ QmlMqttClient::QmlMqttClient(QObject *parent)
 
 }
 
-QmlMqttSubscription *QmlMqttClient::subcribe(const QString &topic)
+QmlMqttSubscription *QmlMqttClient::subscribe(const QString &topic)
 {
     auto sub = QMqttClient::subscribe(topic, 0);
     auto result = new QmlMqttSubscription(sub, this);
