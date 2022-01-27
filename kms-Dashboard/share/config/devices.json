@@ -1,6 +1,6 @@
 [
   {
-    "topic-sensor": "sensor/mushroom/001",
+    "topic-sensor": "sensor/001",
     "topic-control": "ctrl/mushroom/001",
     "token": "",
     "status": {},
