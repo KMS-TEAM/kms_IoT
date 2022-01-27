@@ -135,6 +135,7 @@ QRec {
             function onSensorMessChanged(msg) {
                 var temp = msg;
                 console.log(temp);
+                // TODO: Extract data to chart view
                 chartView.tempMessage(Math.floor(Math.random()*30 + 15))
                 chartView.humtyMessage(Math.floor(Math.random()*90 + 40))
             }

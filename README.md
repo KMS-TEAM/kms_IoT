@@ -3,8 +3,8 @@
 - [x] Review and clean code
 - [ ] Create simple screen (Home, Search, Map, Control, User) 
 	- [x] MenuBar
-	- [ ] Serach Screen
-	- [ ] Home SCreen
+	- [x] Search Screen
+	- [x] Home Screen
 	- [ ] Map Screen
 	- [ ] Control Screen
 	- [ ] User Screen
