@@ -11,10 +11,11 @@
         <file>qml/Screen/Home/HomeScreen.qml</file>
         <file>qml/Screen/Home/MultiButton.qml</file>
         <file>qml/Screen/Control/ControlScreen.qml</file>
-        <file>qml/Screen/Map/MapSceen.qml</file>
+        <file>qml/Screen/Map/MapScreen.qml</file>
         <file>qml/Screen/Search/SearchScreen.qml</file>
         <file>qml/Screen/User/UserScreen.qml</file>
         <file>qml/Component/Common/QSwitch.qml</file>
+        <file>qml/Screen/Map/Marker.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>res/dark/control.svg</file>
@@ -27,6 +28,7 @@
         <file>res/light/map.svg</file>
         <file>res/light/search.svg</file>
         <file>res/light/user.svg</file>
+        <file>res/mapmarker.png</file>
     </qresource>
     <qresource prefix="/config">
         <file>config/broker.json</file>
