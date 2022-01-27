@@ -27,6 +27,16 @@ QString AppModel::sensorMess() const
     return m_mess;
 }
 
+QString AppModel::currentHostName() const
+{
+    return m_sensor->brokerHosts.at(0);
+}
+
+QString AppModel::currentPort() const
+{
+    return "1883";
+}
+
 void AppModel::startHomeScreen()
 {
     m_sensor->connectMQTT(m_sensor->brokerHosts.at(0), 1883);
@@ -77,6 +87,16 @@ void AppModel::setSensorMess(QString msg)
     m_mess = msg;
 
     emit sensorMessChanged(msg);
+}
+
+void AppModel::setCurrentHostName(QString hostName)
+{
+
+}
+
+void AppModel::setCurrentPort(QString port)
+{
+
 }
 
 AppModel::AppModel(QObject *parent)

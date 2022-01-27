@@ -12,10 +12,8 @@ QRec {
     MqttClient {
         id: client
         clientId: "kms_Dashboard"
-        hostname: "localhost"
-        port: {
-            return qsTr("1883");
-        }
+        hostname: AppModel.currentHostName()
+        port: qsTr(AppModel.currentPort())
         cleanSession: true
     }
 
