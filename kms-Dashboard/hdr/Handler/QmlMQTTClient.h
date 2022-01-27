@@ -40,6 +40,7 @@ public:
     explicit QmlMqttClient(QObject *parent = nullptr);
 
     Q_INVOKABLE QmlMqttSubscription *subscribe(const QString &topic);
+    Q_INVOKABLE int publish(const QString &topic, const QString &message, int qos = 0, bool retain = false);
 
 private:
     Q_DISABLE_COPY(QmlMqttClient)

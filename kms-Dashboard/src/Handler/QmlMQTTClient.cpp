@@ -29,3 +29,9 @@ void QmlMqttSubscription::handleMessage(const QMqttMessage &qmsg)
     emit messageReceived(qmsg.payload());
 }
 
+int QmlMqttClient::publish(const QString &topic, const QString &message, int qos, bool retain)
+{
+    auto result = QMqttClient::publish(QMqttTopicName(topic), message.toUtf8(), qos, retain);
+    return result;
+}
+

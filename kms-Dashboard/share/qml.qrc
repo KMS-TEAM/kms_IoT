@@ -12,8 +12,9 @@
         <file>qml/Screen/Home/MultiButton.qml</file>
         <file>qml/Screen/Control/ControlScreen.qml</file>
         <file>qml/Screen/Map/MapSceen.qml</file>
-        <file>qml/Screen/User/UserScreen.qml</file>
         <file>qml/Screen/Search/SearchScreen.qml</file>
+        <file>qml/Screen/User/UserScreen.qml</file>
+        <file>qml/Component/Common/QSwitch.qml</file>
     </qresource>
     <qresource prefix="/res">
         <file>res/dark/control.svg</file>

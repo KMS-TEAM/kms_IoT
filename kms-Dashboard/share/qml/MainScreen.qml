@@ -48,6 +48,15 @@ Item {
         case ENUMS.SearchScreen:
             QmlHandler.qmlMessage("Search Screen");
             return SCREEN.QML_SEARCH
+        case ENUMS.ControlScreen:
+            QmlHandler.qmlMessage("Control Screen");
+            return SCREEN.QML_CONTROL
+        case ENUMS.MapScreen:
+            QmlHandler.qmlMessage("Map Screen");
+            return SCREEN.QML_MAP
+        case ENUMS.UserScreen:
+            QmlHandler.qmlMessage("User Screen");
+            return SCREEN.QML_USER
         default:
             return ""
         }
