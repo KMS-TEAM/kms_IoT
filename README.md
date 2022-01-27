@@ -6,8 +6,8 @@
 	- [x] Search Screen
 	- [x] Home Screen
 	- [ ] Map Screen
-	- [ ] Control Screen
-	- [ ] User Screen
+	- [x] Control Screen
+	- [x] User Screen
 - [ ] Add Custom Chart Plugin 
 - [ ] Add MongDB and MQTT plugin
 - [ ] Add Sensor map view
