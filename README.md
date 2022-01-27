@@ -8,8 +8,10 @@
 	- [x] Map Screen
 	- [x] Control Screen
 	- [x] User Screen
-- [ ] Add Custom Chart Plugin 
-- [ ] Add MongDB and MQTT plugin
-- [ ] Add Sensor map view
-- [ ] Add data analyzist
+- [x] Add MQTT plugin 
+- [ ] Add MongDB plugin
+	- [ ] Data analysis screen
+	- [ ] MongoDB Plugin
+- [ ] Add Sensor location view
+- [ ] Add data analysis algorithm
 
