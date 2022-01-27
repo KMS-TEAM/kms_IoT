@@ -1,4 +1,5 @@
 #include <QGuiApplication>
+#include <QApplication>
 #include <string>
 #include <QSurfaceFormat>
 #include "AppEngine.h"
@@ -7,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
 
     QSurfaceFormat fmt;
     fmt.setVersion( 1, 4 );

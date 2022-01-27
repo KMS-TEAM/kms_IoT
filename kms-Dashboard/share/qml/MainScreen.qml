@@ -43,6 +43,7 @@ Item {
         switch(id){
         case ENUMS.HomeScreen:
             QmlHandler.qmlMessage("Home Screen");
+            QmlHandler.qmlMessage(SCREEN.QML_HOME);
             return SCREEN.QML_HOME
         case ENUMS.SearchScreen:
             QmlHandler.qmlMessage("Search Screen");

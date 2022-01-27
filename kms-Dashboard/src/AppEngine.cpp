@@ -4,6 +4,7 @@
 #include "AppEnums.h"
 #include "QMLHandler.h"
 #include "QmlMQTTClient.h"
+#include "DataSource.h"
 
 ScreenDef* ScreenDef::m_instance = nullptr;
 QMutex ScreenDef::m_lock;
@@ -29,6 +30,13 @@ void AppEngine::initEngine()
 
     qmlRegisterType<QmlMqttClient>("MqttClient", 1, 0, "MqttClient");
     qmlRegisterUncreatableType<QmlMqttSubscription>("MqttClient", 1, 0, "MqttSubscription", QLatin1String("Subscriptions are read-only"));
+
+    // Chart
+    DataSource *dataSource = new DataSource(&m_engine);
+    if(dataSource == nullptr){
+        CONSOLE << "FUNCKING PTR";
+    }
+    m_rootContext->setContextProperty("dataSource", dataSource);
 
     // set context properties
     m_rootContext->setContextProperty("QmlHandler", QML_HANDLER);
