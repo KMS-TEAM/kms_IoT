@@ -59,7 +59,7 @@ int QSensorMQTT::initBokerHost(QString path)
 
 void QSensorMQTT::connectMQTT(QString brokerName, qint16 port)
 {
-    m_client->disconnectFromHost();
+//     m_client->disconnectFromHost();
     m_client = new QMqttClient(this);
     connect(m_client, &QMqttClient::disconnected, this, &QSensorMQTT::onMQTT_disconnected);
     connect(m_client, &QMqttClient::connected, this, &QSensorMQTT::onMQTT_Connected);
